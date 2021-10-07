@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimilarWebParser", "SimilarWebParser\SimilarWebParser.csproj", "{442AE240-0300-4464-AF21-5E910BD58ADD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExampleSimilarWebParser", "ExampleSimilarWebParser\ExampleSimilarWebParser.csproj", "{B53A7A3C-1E8D-47B2-A654-0830CA8C7918}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{442AE240-0300-4464-AF21-5E910BD58ADD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{442AE240-0300-4464-AF21-5E910BD58ADD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{442AE240-0300-4464-AF21-5E910BD58ADD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{442AE240-0300-4464-AF21-5E910BD58ADD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B53A7A3C-1E8D-47B2-A654-0830CA8C7918}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B53A7A3C-1E8D-47B2-A654-0830CA8C7918}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B53A7A3C-1E8D-47B2-A654-0830CA8C7918}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B53A7A3C-1E8D-47B2-A654-0830CA8C7918}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
