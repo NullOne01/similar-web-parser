@@ -18,27 +18,28 @@ namespace SimilarWebParser.Model
 
         [Selector("li.websiteRanks-item:nth-child(3) > div:nth-child(1) > div:nth-child(2) > a:nth-child(1)")]
         public string Category { get; set; }
-        
+
         // Should be int
         [Selector("li.websiteRanks-item:nth-child(3) > div:nth-child(2)")]
         public string CategoryRank { get; set; }
-        
+
         [Selector(".engagementInfo-value--large > span:nth-child(1)")]
         public string TotalVisits { get; set; }
-        
+
         [Selector("div.engagementInfo-line:nth-child(3) > div:nth-child(1) > span:nth-child(2) > span:nth-child(1)")]
         public string AverageVisitDuration { get; set; }
-        
+
         [Selector("div.engagementInfo-line:nth-child(4) > div:nth-child(1) > span:nth-child(2) > span:nth-child(1)")]
         public string PagesPerVisit { get; set; }
-        
+
         [Selector("div.engagementInfo-line:nth-child(5) > div:nth-child(1) > span:nth-child(2) > span:nth-child(1)")]
         public string BounceRate { get; set; }
+
         public List<TopCountry> TopCountries { get; set; }
         public List<TrafficSource> TrafficSources { get; set; }
-        // public List<string> AlsoVisitedWebsites { get; set; }
-        // public List<string> SimilarSites { get; set; }
-        // public List<TopReferringSite> TopReferringSites { get; set; }
+        public List<string> AlsoVisitedWebsites { get; set; }
+        public List<string> SimilarSites { get; set; }
+        public List<TopReferringSite> TopReferringSites { get; set; }
 
         public override string ToString()
         {
@@ -56,11 +57,29 @@ namespace SimilarWebParser.Model
             {
                 res += $"\t {i}. {TopCountries[i]} \n";
             }
-            
+
             res += "TrafficSources(List): \n";
             for (var i = 0; i < TrafficSources.Count; i++)
             {
                 res += $"\t {i}. {TrafficSources[i]} \n";
+            }
+
+            res += "AlsoVisitedWebsites(List): \n";
+            for (var i = 0; i < AlsoVisitedWebsites.Count; i++)
+            {
+                res += $"\t {i}. {AlsoVisitedWebsites[i]} \n";
+            }
+            
+            res += "SimilarSites(List): \n";
+            for (var i = 0; i < SimilarSites.Count; i++)
+            {
+                res += $"\t {i}. {SimilarSites[i]} \n";
+            }
+
+            res += "TopReferringSites(List): \n";
+            for (var i = 0; i < TopReferringSites.Count; i++)
+            {
+                res += $"\t {i}. {TopReferringSites[i]} \n";
             }
 
             return res;

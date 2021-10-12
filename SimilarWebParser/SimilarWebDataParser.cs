@@ -12,7 +12,6 @@ namespace SimilarWebParser
 {
     public class SimilarWebDataParser
     {
-
         public SimilarWebDataParser()
         {
         }
@@ -21,13 +20,18 @@ namespace SimilarWebParser
         {
             return GetWebSiteInfo(GetHTML(GetFullSimilarWebURL(url)));
         }
-        
+
         public SimilarWebInfo GetWebSiteInfo(string html)
         {
             SimilarWebInfo similarWebInfo =
                 WebContentParser.Parse<SimilarWebInfo>(html);
-            similarWebInfo.TopCountries =  WebContentParser.ParseList<TopCountry>(html).ToList();
-            similarWebInfo.TrafficSources =  WebContentParser.ParseList<TrafficSource>(html).ToList();
+            similarWebInfo.TopCountries = WebContentParser.ParseList<TopCountry>(html).ToList();
+            similarWebInfo.TrafficSources = WebContentParser.ParseList<TrafficSource>(html).ToList();
+            similarWebInfo.AlsoVisitedWebsites = WebContentParser.ParseList<AlsoVisitedWebsite>(html)
+                .Select(info => info.WebsiteName).ToList();
+            similarWebInfo.SimilarSites = WebContentParser.ParseList<SimilarSite>(html)
+                .Select(info => info.WebsiteName).ToList();
+            similarWebInfo.TopReferringSites = WebContentParser.ParseList<TopReferringSite>(html).ToList();
             return similarWebInfo;
         }
 
@@ -56,8 +60,8 @@ namespace SimilarWebParser
             client.Headers["accept"] =
                 "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8";
             client.Headers["cache-control"] = "max-age=0";
-                //client.Headers["sec-ch-ua"] =
-                //"\"Chromium\";v=\"94\", \"Google Chrome\";v=\"94\", \";Not A Brand\";v=\"99\"";
+            //client.Headers["sec-ch-ua"] =
+            //"\"Chromium\";v=\"94\", \"Google Chrome\";v=\"94\", \";Not A Brand\";v=\"99\"";
             client.Headers["sec-ch-ua-mobile"] = "?0";
             client.Headers["sec-ch-ua-platform"] = "\"Windows\"";
             client.Headers["sec-fetch-dest"] = "document";
@@ -67,7 +71,7 @@ namespace SimilarWebParser
             client.Headers["upgrade-insecure-requests"] = "1";
             client.Headers["accept-language"] = "en-EN,en";
             client.Headers["TE"] = "trailers";
-            
+
             //User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:92.0) Gecko/20100101 Firefox/92.0
             //Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
             //Accept-Language: ru-RU,ru;q=0.8,en-US;q=0.5,en;q=0.3
@@ -81,8 +85,8 @@ namespace SimilarWebParser
             //Sec-Fetch-User: ?1
             //Cache-Control: max-age=0
             //TE: trailers
-            
-            
+
+
             // Encoding
             client.Encoding = Encoding.UTF8;
 

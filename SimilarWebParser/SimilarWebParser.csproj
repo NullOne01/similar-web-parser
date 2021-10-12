@@ -50,6 +50,8 @@
         </Reference>
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="Model\AlsoVisitedWebsite.cs" />
+        <Compile Include="Model\SimilarSite.cs" />
         <Compile Include="Model\TopCountry.cs" />
         <Compile Include="Model\TopReferringSite.cs" />
         <Compile Include="Model\TrafficSource.cs" />
