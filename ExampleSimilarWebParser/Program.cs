@@ -11,7 +11,8 @@ namespace ExampleSimilarWebParser
         public static void Main(string[] args)
         {
             SimilarWebDataParser similarWebDataParser = new SimilarWebDataParser();
-            SimilarWebInfo info = similarWebDataParser.GetWebSiteInfo(File.ReadAllText("HTML.html"));
+            //SimilarWebInfo info = similarWebDataParser.GetWebSiteInfo(File.ReadAllText("HTML2.html"));
+            SimilarWebInfo info = similarWebDataParser.GetWebSiteInfoURL("pikabu.ru");
             PrintInfo(info);
         }
 

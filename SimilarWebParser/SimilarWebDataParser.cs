@@ -46,8 +46,7 @@ namespace SimilarWebParser
             {
                 SetUpWebClient(client);
                 string html = client.DownloadString(url);
-                // File.WriteAllText("HTML.txt", html);
-                // string html = File.ReadAllText("HTML.txt");
+                File.WriteAllText("HTML3.html", html);
                 return html;
             }
         }

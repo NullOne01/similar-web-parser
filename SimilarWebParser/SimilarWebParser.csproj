@@ -50,6 +50,9 @@
         </Reference>
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="Converters\StringToDoubleConverter.cs" />
+        <Compile Include="Converters\StringToIntegerConverter.cs" />
+        <Compile Include="Converters\StringToTimeSpanConverter.cs" />
         <Compile Include="Model\AlsoVisitedWebsite.cs" />
         <Compile Include="Model\SimilarSite.cs" />
         <Compile Include="Model\TopCountry.cs" />

@@ -1,4 +1,6 @@
-﻿using WebsiteParser.Attributes;
+﻿using System.ComponentModel;
+using SimilarWebParser.Converters;
+using WebsiteParser.Attributes;
 using WebsiteParser.Attributes.StartAttributes;
 
 namespace SimilarWebParser.Model
@@ -9,13 +11,14 @@ namespace SimilarWebParser.Model
         [Selector(".country-name")]
         public string CountryName { get; set; }
         
-        // should be double
         [Selector(".traffic-share-valueNumber")]
-        public string Percentage { get; set; }
+        [Regex("(.*)%")]
+        [Converter(typeof(StringToDoubleConverter))]
+        public double Percentage { get; set; }
 
         public override string ToString()
         {
-            return $"CountryName = {CountryName}, Percentage = {Percentage}";
+            return $"CountryName = {CountryName}, Percentage = {Percentage}%";
         }
     }
 }
