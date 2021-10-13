@@ -3,6 +3,9 @@ using WebsiteParser.Attributes.StartAttributes;
 
 namespace SimilarWebParser.Model
 {
+    /// <summary>
+    /// Parsed SimilarSite data.
+    /// </summary>
     [ListSelector(".similarSitesList.similarity", ChildSelector = ".similarSitesList-item")]
     internal class SimilarSite
     {

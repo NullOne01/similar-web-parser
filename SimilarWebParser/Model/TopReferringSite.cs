@@ -4,6 +4,9 @@ using WebsiteParser.Attributes.StartAttributes;
 
 namespace SimilarWebParser.Model
 {
+    /// <summary>
+    /// Parsed TopReferringSite data.
+    /// </summary>
     [ListSelector(".websitePage-list", ChildSelector = ".websitePage-listItem")]
     public class TopReferringSite
     {

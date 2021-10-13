@@ -7,6 +7,9 @@ using WebsiteParser.Converters;
 
 namespace SimilarWebParser.Model
 {
+    /// <summary>
+    /// Class which contains whole parsed data from SimilarWeb.
+    /// </summary>
     public class SimilarWebInfo
     {
         [Selector("li.websiteRanks-item:nth-child(1) > div:nth-child(2)")]

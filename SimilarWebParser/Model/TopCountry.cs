@@ -5,6 +5,9 @@ using WebsiteParser.Attributes.StartAttributes;
 
 namespace SimilarWebParser.Model
 {
+    /// <summary>
+    /// Parsed TopCountry data.
+    /// </summary>
     [ListSelector("#geo-countries-accordion", ChildSelector = ".accordion-heading")]
     public class TopCountry
     {

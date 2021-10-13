@@ -4,6 +4,9 @@ using WebsiteParser.Attributes.StartAttributes;
 
 namespace SimilarWebParser.Model
 {
+    /// <summary>
+    /// Parsed TrafficSource data.
+    /// </summary>
     [ListSelector(".trafficSourcesChart-list", ChildSelector = ".trafficSourcesChart-item")]
     public class TrafficSource
     {

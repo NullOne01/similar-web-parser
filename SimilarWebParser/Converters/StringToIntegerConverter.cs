@@ -4,6 +4,9 @@ using WebsiteParser.Converters.Abstract;
 
 namespace SimilarWebParser.Converters
 {
+    /// <summary>
+    /// Converter for parsed string data into integer data.
+    /// </summary>
     internal class StringToIntegerConverter : IConverter
     {
         public object Convert(object input)

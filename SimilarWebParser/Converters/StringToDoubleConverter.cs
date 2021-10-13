@@ -4,6 +4,9 @@ using WebsiteParser.Converters.Abstract;
 
 namespace SimilarWebParser.Converters
 {
+    /// <summary>
+    /// Converter for parsed string data into double data.
+    /// </summary>
     internal class StringToDoubleConverter : IConverter
     {
         public object Convert(object input)

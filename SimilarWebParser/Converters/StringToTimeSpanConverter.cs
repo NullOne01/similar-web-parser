@@ -4,6 +4,9 @@ using WebsiteParser.Converters.Abstract;
 
 namespace SimilarWebParser.Converters
 {
+    /// <summary>
+    /// Converter for parsed string data into TimeSpan data.
+    /// </summary>
     internal class StringToTimeSpanConverter : IConverter
     {
         public object Convert(object input)
