@@ -42,8 +42,6 @@
         </Reference>
         <Reference Include="System" />
         <Reference Include="System.Core" />
-        <Reference Include="System.Data" />
-        <Reference Include="System.Xml" />
         <Reference Include="WebsiteParser, Version=1.1.3.0, Culture=neutral, PublicKeyToken=null">
           <HintPath>..\packages\WebsiteParser.1.1.3\lib\netstandard2.0\WebsiteParser.dll</HintPath>
           <Private>True</Private>
