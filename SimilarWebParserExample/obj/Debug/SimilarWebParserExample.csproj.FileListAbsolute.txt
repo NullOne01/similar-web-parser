@@ -1,0 +1,14 @@
+F:\Projects\C#\Upwork\SimilarWebParser\SimilarWebParserExample\bin\Debug\SimilarWebParserExample.exe
+F:\Projects\C#\Upwork\SimilarWebParser\SimilarWebParserExample\bin\Debug\SimilarWebParserExample.pdb
+F:\Projects\C#\Upwork\SimilarWebParser\SimilarWebParserExample\bin\Debug\SimilarWebParser.dll
+F:\Projects\C#\Upwork\SimilarWebParser\SimilarWebParserExample\bin\Debug\WebsiteParser.dll
+F:\Projects\C#\Upwork\SimilarWebParser\SimilarWebParserExample\bin\Debug\HtmlAgilityPack.dll
+F:\Projects\C#\Upwork\SimilarWebParser\SimilarWebParserExample\bin\Debug\HtmlAgilityPack.CssSelectors.dll
+F:\Projects\C#\Upwork\SimilarWebParser\SimilarWebParserExample\bin\Debug\SimilarWebParser.pdb
+F:\Projects\C#\Upwork\SimilarWebParser\SimilarWebParserExample\bin\Debug\HtmlAgilityPack.xml
+F:\Projects\C#\Upwork\SimilarWebParser\SimilarWebParserExample\bin\Debug\HtmlAgilityPack.CssSelectors.pdb
+F:\Projects\C#\Upwork\SimilarWebParser\SimilarWebParserExample\obj\Debug\SimilarWebParserExample.csproj.AssemblyReference.cache
+F:\Projects\C#\Upwork\SimilarWebParser\SimilarWebParserExample\obj\Debug\SimilarWebParserExample.csproj.CoreCompileInputs.cache
+F:\Projects\C#\Upwork\SimilarWebParser\SimilarWebParserExample\obj\Debug\SimilarWebParserExample.csproj.CopyComplete
+F:\Projects\C#\Upwork\SimilarWebParser\SimilarWebParserExample\obj\Debug\SimilarWebParserExample.exe
+F:\Projects\C#\Upwork\SimilarWebParser\SimilarWebParserExample\obj\Debug\SimilarWebParserExample.pdb
