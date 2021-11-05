@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.Net;
 using System.Text;
@@ -10,20 +11,50 @@ namespace SimilarWebParserExample
 {
     internal class Program
     {
+        // This is my free trial proxy data.
+        private const string ProxyUrl =
+            "http://scraperapi:3b5c821f62d1595c47a0277c0eedcaec@proxy-server.scraperapi.com:8001";
+        private const string ProxyUserName = "scraperapi";
+        private const string ProxyPassword = "3b5c821f62d1595c47a0277c0eedcaec";
+
         public static void Main(string[] args)
         {
             Console.WriteLine("Example 1");
             Console.WriteLine("Parsing downloaded html file: ");
-            Example1();
+            try
+            {
+                Example1();
+            }
+            catch
+            {
+                Console.WriteLine("Couldn't parse local copy of SimilarWeb HTML. ");
+            }
 
 
             Console.WriteLine("---------------------------------------------");
 
 
             Console.WriteLine("Example 2");
-            const string domainToParse = "pikabu.ru";
-            Console.WriteLine($"Download and parse HTML page for domain {domainToParse}: ");
-            Example2(domainToParse);
+            const string domainToParse = "eharmony.com";
+            Console.WriteLine($"Download (without proxy) and parse HTML page for domain {domainToParse}: ");
+            try
+            {
+                Example2(domainToParse);
+            }
+            catch
+            {
+                Console.WriteLine("Couldn't download and parse SimilarWeb without proxy.");
+            }
+
+
+            Console.WriteLine("---------------------------------------------");
+
+
+            Console.WriteLine("Example 3");
+            Console.WriteLine($"We download the same SimilarWeb data about {domainToParse} many times using proxy.");
+            Console.WriteLine("Without proxy it would be impossible.");
+            Console.WriteLine();
+            Example3(domainToParse);
         }
 
         /// <summary>
@@ -38,7 +69,7 @@ namespace SimilarWebParserExample
         }
 
         /// <summary>
-        /// Example 2 to parse downloaded SimilarWeb HTML page for <paramref name="domain"/>.
+        /// Example 2 to parse downloaded SimilarWeb HTML page for <paramref name="domain"/> without proxy.
         /// </summary>
         /// <param name="domain"> Domain to parse SimilarWeb data about. </param>
         private static void Example2(string domain)
@@ -60,14 +91,74 @@ namespace SimilarWebParserExample
         }
 
         /// <summary>
+        /// Example 3 to parse downloaded SimilarWeb HTML page from <paramref name="domain"/> with proxy.
+        /// </summary>
+        /// <param name="domain"> Domain to parse SimilarWeb data about. </param>
+        private static void Example3(string domain)
+        {
+            int parseNum = 0;
+            while (parseNum < 500)
+            {
+                Console.WriteLine($"Download and parse HTML page for domain (PROXY) {domain}: ");
+                Console.WriteLine($"Time start: {DateTime.Now}");
+
+                // Trying to parse until proxy error is not given.
+                while (true)
+                {
+                    try
+                    {
+                        ExampleProxy(domain);
+                        break;
+                    }
+                    catch (WebException)
+                    {
+                        // scraperapi proxy gives error 500 if it can't download page for 60 seconds.
+                        // by using this try/catch we give it extra time (1 more minute on failure).
+                        Console.WriteLine($"Timeout on downloading web page! Time: {DateTime.Now}");
+                        Console.WriteLine("Giving extra 60 seconds...");
+                    }
+                }
+
+                parseNum++;
+                Console.WriteLine("Webpage was parsed successfully!");
+                Console.WriteLine($"Time end: {DateTime.Now}");
+                Console.WriteLine($"You've downloaded and parsed \"{domain}\" {parseNum} times. ");
+
+                Console.WriteLine("---------------------------------");
+            }
+        }
+
+        /// <summary>
+        /// Example to parse downloaded SimilarWeb HTML page from <paramref name="domain"/> using scraperapi proxy.
+        /// </summary>
+        /// <param name="domain"> URL to parse SimilarWeb data from. </param>
+        private static void ExampleProxy(string domain)
+        {
+            using (WebClient webClient = new WebClient())
+            {
+                // Here we give different headers to our query.
+                SetUpWebClient(webClient);
+
+                // Here we set up our scraperapi proxy.
+                WebProxy proxy = new WebProxy(ProxyUrl);
+                proxy.Credentials = new NetworkCredential(ProxyUserName, ProxyPassword);
+                webClient.Proxy = proxy;
+
+                // Finally download and parse using our proxy.
+                SimilarWebInfo info = SimilarWebDataParser.GetWebSiteInfo(webClient, domain);
+                Console.WriteLine(info);
+            }
+        }
+
+        /// <summary>
         /// Configure web client to make 403 disappear. 
         /// </summary>
         /// <param name="client"> WebClient to configure. </param>
         private static void SetUpWebClient(WebClient client)
         {
-            // Some headers to look like a human.
-            client.Headers["user-agent"] =
-                "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:92.0) Gecko/20100101 Firefox/92.0";
+            // Some headers to look like a human. \\
+            // Random user agent.
+            client.Headers["user-agent"] = RandomUa.RandomUserAgent;
             client.Headers["accept"] =
                 "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8";
             client.Headers["cache-control"] = "max-age=0";
